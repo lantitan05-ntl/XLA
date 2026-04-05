@@ -32,7 +32,7 @@ with st.sidebar:
     quality = st.slider("Chất lượng (Quality)", 10, 100, 70)
     width_custom = st.number_input("Chiều rộng mới (0 = giữ nguyên)", value=0)
     st.divider()
-    st.info("Mẹo: Máy khác truy cập bằng IP Network hiển thị ở Terminal nhé!")
+
 
 # --- GIAO DIỆN CHÍNH ---
 uploaded_file = st.file_uploader("Kéo thả ảnh vào đây", type=["jpg", "png", "jpeg"])
@@ -71,3 +71,13 @@ if uploaded_file:
         file_name="nen_anh_pro.jpg",
         mime="image/jpeg"
     )
+    # Ẩn các thành phần giao diện mặc định của Streamlit
+hide_st_style = """
+            <style>
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            .stDeployButton {display:none;}
+            #stDecoration {display:none;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
